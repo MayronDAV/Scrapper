@@ -1,0 +1,15 @@
+[submodule "Thirdparty/cpr"]
+	path = Thirdparty/cpr
+	url = https://github.com/libcpr/cpr.git
+[submodule "Thirdparty/lexbor"]
+	path = Thirdparty/lexbor
+	url = https://github.com/lexbor/lexbor.git
+[submodule "Thirdparty/glfw"]
+	path = Thirdparty/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "Thirdparty/imgui"]
+	path = Thirdparty/imgui
+	url = https://github.com/ocornut/imgui.git
+[submodule "Thirdparty/curl"]
+	path = Thirdparty/curl
+	url = https://github.com/curl/curl.git
