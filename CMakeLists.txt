@@ -54,6 +54,6 @@ include_directories(
 
 add_subdirectory(Thirdparty)
 
-file(GLOB_RECURSE SCRAPPER_SOURCES "Source/*.cpp" "Source/*.h")
+file(GLOB_RECURSE SCRAPPER_SOURCES "Source/**.cpp" "Source/**.h")
 add_executable(Scrapper ${SCRAPPER_SOURCES})
 target_link_libraries(Scrapper PRIVATE ${OPENGL_LIBS} glad glfw imgui cpr lexbor_static)
