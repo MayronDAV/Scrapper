@@ -18,6 +18,8 @@
     #Error Unsupported compiler for debug break!
 #endif
 
+#define BIT(x) x << 1
+
 #define EXPAND_MACRO(x) x
 #define STRINGIFY_MACRO(x) #x
 

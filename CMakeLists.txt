@@ -16,12 +16,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 if (NOT MSVC)
 	# globally set -fno-strict-aliasing, needed due to using reinterpret_cast
-  	add_compile_options(-fno-strict-aliasing)
+  	add_compile_options(-fno-strict-aliasing -finput-charset=UTF-8 -fexec-charset=UTF-8 -fno-char8_t)
 endif()
 
 if(MSVC)
-	add_compile_options(/std:c++20 /MP)
-	add_link_options(/ignore:4099)
+	add_compile_options(/std:c++20 /MP /utf-8 /Zc:char8_t-)
+	add_link_options(/ignore:4099 /NODEFAULTLIB:MSVCRT)
 endif()
 
 # create bin folder
@@ -54,6 +54,6 @@ include_directories(
 
 add_subdirectory(Thirdparty)
 
-file(GLOB_RECURSE SCRAPPER_SOURCES "Source/**.cpp" "Source/**.h")
+file(GLOB_RECURSE SCRAPPER_SOURCES "Source/**.cpp" "Source/**.h" "Source/**.inl")
 add_executable(Scrapper ${SCRAPPER_SOURCES})
 target_link_libraries(Scrapper PRIVATE ${OPENGL_LIBS} glad glfw imgui cpr lexbor_static)
