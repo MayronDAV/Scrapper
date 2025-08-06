@@ -40,6 +40,7 @@ namespace SCPY
             size_t GetTotalResults() const { return m_TotalResults; }
             int GetCurrentPage() const { return m_CurrentPage; }
             int GetDocsPerPage() const { return m_DocsPerPage; }
+            std::string GetTerm() const { return m_Term; }
             const std::vector<Lawsuit>& GetLawsuits() const { return m_Lawsuits; }
 
         private:

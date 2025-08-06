@@ -2,6 +2,7 @@
 #include "Events/Event.h"
 #include "Window.h"
 #include "ImGuiLayer.h"
+#include "Search.h"
 
 // std
 #include <memory>
@@ -27,9 +28,12 @@ namespace SCPY
 
         private:
             void Init();
+            void OnImgui();
 
         private:
             static inline Application* s_Instance = nullptr;
+
+            std::shared_ptr<Search> m_Search;
 
             std::shared_ptr<Window> m_Window;
             std::shared_ptr<ImGuiLayer> m_ImGuiLayer;
@@ -38,6 +42,10 @@ namespace SCPY
 
             double m_LastTime = 0;
             double m_DeltaTime = 0;
+
+            bool m_ShowCopyPopup = false;
+            double m_CopyPopupTimer = 0.0;
+            const double m_CopyPopupDuration = 2.0;
 
             bool m_Running = true;
     };
