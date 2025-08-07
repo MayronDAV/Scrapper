@@ -68,3 +68,23 @@ set(LEXBOR_BUILD_SHARED OFF)
 set(LEXBOR_BUILD_STATIC ON)
 add_subdirectory(lexbor)
 set_property(TARGET lexbor_static PROPERTY FOLDER "Thirdparty")
+
+include(FetchContent)
+
+# YAML
+FetchContent_Declare(
+  yaml-cpp
+  GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+  GIT_TAG master
+)
+FetchContent_MakeAvailable(yaml-cpp)
+set_property(TARGET yaml-cpp PROPERTY FOLDER "Thirdparty")
+
+# UTF8CPP 
+FetchContent_Declare(
+    utf8cpp
+    GIT_REPOSITORY https://github.com/nemtrif/utfcpp.git
+    GIT_TAG v4.0.6
+)
+FetchContent_MakeAvailable(utf8cpp )
+set_property(TARGET utf8cpp  PROPERTY FOLDER "Thirdparty")

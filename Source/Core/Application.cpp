@@ -261,19 +261,40 @@ namespace SCPY
                             ImGui::TextWrapped(lawsuit.Case.c_str());
                             ImGui::NewLine();
 
-                            if (InviButton(ICON_MDI_CONTENT_COPY "##2", {0, lineHeight}))
+                            auto available = ImGui::GetContentRegionAvail().x;
+                            ImGui::BeginChild("##JUDGEDATE", {available / 2.0f, 2.0f * lineHeight});
                             {
-                                ImGui::SetClipboardText(lawsuit.JudgmentDate.c_str());
-                                m_ShowCopyPopup = true;
-                                m_CopyPopupTimer = m_CopyPopupDuration;
-                            }
-                            ImGui::SameLine();
-                            ImGui::Text("JUDGMENT DATE");
+                                if (InviButton(ICON_MDI_CONTENT_COPY "##2", {0, lineHeight}))
+                                {
+                                    ImGui::SetClipboardText(lawsuit.JudgmentDate.c_str());
+                                    m_ShowCopyPopup = true;
+                                    m_CopyPopupTimer = m_CopyPopupDuration;
+                                }
+                                ImGui::SameLine();
+                                ImGui::Text("JUDGMENT DATE");
 
-                            ImGui::TextWrapped(lawsuit.JudgmentDate.c_str());
+                                ImGui::TextWrapped(lawsuit.JudgmentDate.c_str());
+                            }
+                            ImGui::EndChild();
+                            ImGui::SameLine();
+                            ImGui::BeginChild("##PUBDATE", {available / 2.0f, 2.0f * lineHeight});
+                            {
+                                if (InviButton(ICON_MDI_CONTENT_COPY "##3", {0, lineHeight}))
+                                {
+                                    ImGui::SetClipboardText(lawsuit.PubDate.c_str());
+                                    m_ShowCopyPopup = true;
+                                    m_CopyPopupTimer = m_CopyPopupDuration;
+                                }
+                                ImGui::SameLine();
+                                ImGui::Text("PUBLICATION DATE");
+
+                                ImGui::TextWrapped(lawsuit.PubDate.c_str());
+                            }
+                            ImGui::EndChild();
+
                             ImGui::NewLine();
 
-                            if (InviButton(ICON_MDI_CONTENT_COPY "##3", {0, lineHeight}))
+                            if (InviButton(ICON_MDI_CONTENT_COPY "##4", {0, lineHeight}))
                             {
                                 ImGui::SetClipboardText(lawsuit.Rapporteur.c_str());
                                 m_ShowCopyPopup = true;
@@ -285,7 +306,7 @@ namespace SCPY
                             ImGui::TextWrapped(lawsuit.Rapporteur.c_str());
                             ImGui::NewLine();
 
-                            if (InviButton(ICON_MDI_CONTENT_COPY "##4", {0, lineHeight}))
+                            if (InviButton(ICON_MDI_CONTENT_COPY "##5", {0, lineHeight}))
                             {
                                 ImGui::SetClipboardText(lawsuit.Headnote.c_str());
                                 m_ShowCopyPopup = true;
@@ -295,6 +316,18 @@ namespace SCPY
                             ImGui::Text("HEADNOTE");
 
                             ImGui::TextWrapped(lawsuit.Headnote.c_str());
+                            ImGui::NewLine();
+
+                            if (InviButton(ICON_MDI_CONTENT_COPY "##6", {0, lineHeight}))
+                            {
+                                ImGui::SetClipboardText(lawsuit.Decision.c_str());
+                                m_ShowCopyPopup = true;
+                                m_CopyPopupTimer = m_CopyPopupDuration;
+                            }
+                            ImGui::SameLine();
+                            ImGui::Text("DECISION");
+
+                            ImGui::TextWrapped(lawsuit.Decision.c_str());
                         }
                         ImGui::EndChild();
                         ImGui::PopID();
@@ -324,6 +357,11 @@ namespace SCPY
 
                 if (InviButton(ICON_MDI_PAGE_LAST, { 0, lineHeight }))
                     m_Search->LastPage();
+
+                ImGui::SameLine();
+
+                if (ImGui::Button("Export " ICON_MDI_FILE_EXPORT, { 0, lineHeight }))
+                    m_Search->ExportYML();
             }
 
             if (m_ShowCopyPopup)

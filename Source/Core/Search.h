@@ -29,6 +29,7 @@ namespace SCPY
             void LastPage();
 
             void Load();
+            void ExportYML();
 
             void SetDocsPerPage(int p_DocsPerPage) { m_DocsPerPage = p_DocsPerPage; }
             void SetSaveHtml(bool p_SaveHtml) { m_SaveHtml = p_SaveHtml; }
