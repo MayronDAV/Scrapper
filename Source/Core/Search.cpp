@@ -258,7 +258,7 @@ namespace SCPY
 
     void Search::PrevPage()
     {
-        if (m_CurrentPage > 0)
+        if (m_HasPrevPage && m_CurrentPage > 0)
             m_CurrentPage--;
 
         m_CurrentUrl = FormatUrl(m_Term, m_DocsPerPage, m_CurrentPage, m_CurrentPage == 0);
@@ -272,11 +272,7 @@ namespace SCPY
 
     void Search::LastPage()
     {
-        #ifdef min
-            m_CurrentPage = min(int(m_TotalResults / m_DocsPerPage) - 1, 0);
-        #else
-            m_CurrentPage = std::min(int(m_TotalResults / m_DocsPerPage) - 1, 0);
-        #endif
+        m_CurrentPage = int(m_TotalResults / m_DocsPerPage);
 
         m_CurrentUrl = FormatUrl(m_Term, m_DocsPerPage, m_CurrentPage, false);
 

@@ -335,12 +335,12 @@ namespace SCPY
                 }
                 ImGui::EndChild();
 
-                if (InviButton(ICON_MDI_PAGE_FIRST, { 0, lineHeight }))
+                if (InviButton(ICON_MDI_CHEVRON_DOUBLE_LEFT, { 0, lineHeight }))
                     m_Search->FirstPage();         
 
                 ImGui::SameLine();
 
-                if (InviButton(ICON_MDI_PAGE_PREVIOUS, { 0, lineHeight }))
+                if (InviButton(ICON_MDI_CHEVRON_LEFT, { 0, lineHeight }))
                     m_Search->PrevPage();
 
                 ImGui::SameLine();
@@ -350,12 +350,12 @@ namespace SCPY
 
                 ImGui::SameLine();
 
-                if (InviButton(ICON_MDI_PAGE_NEXT, { 0, lineHeight }))
+                if (InviButton(ICON_MDI_CHEVRON_RIGHT, { 0, lineHeight }))
                     m_Search->NextPage();
 
                 ImGui::SameLine();
 
-                if (InviButton(ICON_MDI_PAGE_LAST, { 0, lineHeight }))
+                if (InviButton(ICON_MDI_CHEVRON_DOUBLE_RIGHT, { 0, lineHeight }))
                     m_Search->LastPage();
 
                 ImGui::SameLine();
